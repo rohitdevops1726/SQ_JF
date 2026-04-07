@@ -24,7 +24,7 @@ stages {
 
 			echo "----------Unit Test Started---------"
 
-			sh 'surefire-report:report'
+			sh 'mvn surefire-report:report'
 
 			echo "----------Unit Test Completed-------"
 
