@@ -10,9 +10,26 @@ stages {
 
 		steps {
 			
-			sh 'mvn clean deploy'
+			echo "---------Build Started---------"
+
+			sh 'mvn clean deploy -Dmaven.test.skip=true'
+
+			echo "---------Build Completed-------"
 		}
 	}	
+
+	stage ('Test'){
+
+		steps {
+
+			echo "----------Unit Test Started---------"
+
+			sh 'surefire-report:report'
+
+			echo "----------Unit Test Completed-------"
+
+		}
+	}
 
 	stage ('SonarQube Analysis'){
 
